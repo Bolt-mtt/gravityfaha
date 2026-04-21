@@ -1,0 +1,9 @@
+Coloque aqui as fotos dos cenários/stands com os seguintes nomes:
+
+display-pista.jpg
+diorama-garagem.jpg
+display-estacionamento.jpg
+display-intersecao.jpg
+
+Formatos aceitos: JPG, PNG, WEBP
+Tamanho recomendado: 800x600px ou maior

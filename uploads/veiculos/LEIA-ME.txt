@@ -1,0 +1,13 @@
+Coloque aqui as fotos dos veículos com os seguintes nomes:
+
+audi-rs-touring-black.jpg
+bmw-e30-m3.jpg
+lamborghini-gt3-yellow.jpg
+lancer-evo-red.jpg
+pickup-hotrod-black.jpg
+porsche-classic-black.jpg
+porsche-grey.jpg
+porsche-christmas.jpg
+
+Formatos aceitos: JPG, PNG, WEBP
+Tamanho recomendado: 800x600px ou maior
