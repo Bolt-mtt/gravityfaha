@@ -1,121 +1,159 @@
 // --- Dados dos Produtos ---
-const veiculos = [
+const linhapadrao = [
     {
-        id: 'v1', title: 'Porsche 911 Turbo', price: 299.90,
-        image: 'uploads/veiculos/porsche-911-turbo-black.jpg',
-        cenario: 'uploads/cenarios/porsche-911-turbo-black.jpg',
-        description: 'O ícone alemão em escala 1:64, reproduzido com fidelidade absoluta — capô traseiro, spoiler variável e cada detalhe da carroceria esculpidos em peças individuais.',
-        specs: ['Escala 1:64 em blocos Nano', 'Aprox. 280 peças', 'Inclui suporte de exposição', 'Cores: Preto Carraça']
+        id: 'p1', title: 'Mini Car Blocos ABS – Azul', price: 140,
+        image: 'https://s.alicdn.com/@sc04/kf/H1608910cf6a84e9380d72127178287764.jpg_960x960q80.jpg',
+        description: 'Miniatura esportiva azul com 386 blocos ABS de alta precisão. Montagem manual que desenvolve raciocínio e resulta em uma peça de coleção incrível.',
+        specs: ['386 peças ABS de alta qualidade', 'Cor: Azul vibrante', 'Ideal para maiores de 14 anos', 'Embalagem presente inclusa']
     },
     {
-        id: 'v2', title: 'Audi RS Touring', price: 279.90,
-        image: 'uploads/veiculos/audi-rs-touring-black.jpg',
-        cenario: 'uploads/cenarios/audi-rs-touring-black.jpg',
-        description: 'A brutalidade sedã do Audi RS capturada em miniatura. Grade Singleframe, difusor traseiro e rodas RS reproduzidos com detalhes milimétricos.',
-        specs: ['Escala 1:64 em blocos Nano', 'Aprox. 240 peças', 'Inclui suporte de exposição', 'Cores: Preto Mate']
+        id: 'p2', title: 'Mini Model Car – Branco', price: 140,
+        image: 'https://s.alicdn.com/@sc04/kf/H6a4e1d314df94e2f9bd0d7796c57c2d4e.jpg_960x960q80.jpg',
+        description: 'Elegância em branco puro. Modelo esportivo com 354 peças ABS para montar, ideal para presentear ou exibir com estilo na sua coleção.',
+        specs: ['354 peças ABS de alta qualidade', 'Cor: Branco', 'Ideal para maiores de 14 anos', 'Embalagem presente inclusa']
     },
     {
-        id: 'v3', title: 'Lamborghini GT3', price: 349.90,
-        image: 'uploads/veiculos/lamborghini-gt3-yellow.jpg',
-        cenario: 'uploads/cenarios/lamborghini-gt3-yellow.jpg',
-        description: 'Aerodinâmica de pista em escala real. O Lamborghini GT3 com asa traseira ajustável, saias laterais e pintura amarela racing que para qualquer olhar.',
-        specs: ['Escala 1:64 em blocos Nano', 'Aprox. 320 peças', 'Inclui suporte de exposição', 'Cores: Amarelo Racing']
+        id: 'p3', title: 'SUV Sport Car MOC – Preto', price: 140,
+        image: 'https://s.alicdn.com/@sc04/kf/H28a0ffceb9e4454f93ba5dda0134b9f8m.jpg_960x960q80.jpg',
+        description: 'SUV esportivo em preto intenso. Com 408 peças, reproduz detalhes de um veículo de alto padrão que vai impressionar qualquer colecionador.',
+        specs: ['408 peças ABS de alta qualidade', 'Cor: Preto', 'Ideal para maiores de 14 anos', 'Embalagem presente inclusa']
     },
     {
-        id: 'v4', title: 'BMW E30 M3', price: 259.90,
-        image: 'uploads/veiculos/bmw-e30-m3-white.jpg',
-        cenario: 'uploads/cenarios/bmw-e30-m3-white.jpg',
-        description: 'A lenda do Grupo A voltou. O E30 M3 com suas maçanetas de porta, spoiler traseiro e arcos alargados que definiram uma geração de entusiastas.',
-        specs: ['Escala 1:64 em blocos Nano', 'Aprox. 260 peças', 'Inclui suporte de exposição', 'Cores: Branco Alpino']
+        id: 'p4', title: 'Sport Car MOC – Preto', price: 140,
+        image: 'https://s.alicdn.com/@sc04/kf/H7ac2980ac2314e818968b515b80dc5883.jpg_960x960q80.jpg',
+        description: 'Sport car compacto em preto para colecionadores. Blocos ABS precisos que reproduzem o charme de um carro esportivo clássico em miniatura.',
+        specs: ['50 peças ABS de alta qualidade', 'Cor: Preto', 'Ideal para maiores de 14 anos', 'Embalagem presente inclusa']
     },
     {
-        id: 'v5', title: 'Lancer Evolution', price: 249.90,
-        image: 'uploads/veiculos/lancer-evo-red.jpg',
-        cenario: 'uploads/cenarios/lancer-evo-red.jpg',
-        description: 'O samurai do WRC. Lancer Evolution com intercooler frontal, asa Enkei e entradas de ar reproduzidas em blocos com precisão japonesa.',
-        specs: ['Escala 1:64 em blocos Nano', 'Aprox. 250 peças', 'Inclui suporte de exposição', 'Cores: Vermelho Rally']
+        id: 'p5', title: 'Sport Car DIY – Cinza', price: 140,
+        image: 'https://s.alicdn.com/@sc04/kf/Hc97b27fb43b14c64b26dfae8eea93032V.jpg_960x960q80.jpg',
+        description: 'Sport car criativo em cinza neutro. Montagem DIY que mistura diversão e habilidade para criar uma miniatura elegante e sofisticada.',
+        specs: ['50 peças ABS de alta qualidade', 'Cor: Cinza', 'Ideal para maiores de 14 anos', 'Embalagem presente inclusa']
     },
     {
-        id: 'v6', title: 'Porsche 911 RWB', price: 329.90,
-        image: 'uploads/veiculos/porsche-911-rwb-red.jpg',
-        cenario: 'uploads/cenarios/porsche-911-rwb-red.jpg',
-        description: 'A versão RWB custom do 911 — kit Rauh-Welt Begriff com para-lamas alargados, assento rebaixado e visual inconfundível que nenhuma peça de fábrica consegue igualar.',
-        specs: ['Escala 1:64 em blocos Nano', 'Aprox. 295 peças', 'Inclui suporte de exposição', 'Cores: Vermelho Candy']
+        id: 'p6', title: 'Sport Car MOC – Azul 2025', price: 140,
+        image: 'https://s.alicdn.com/@sc04/kf/H1eab19e0b8e246b9ab1f48951cef69d4Y.jpg_960x960q80.jpg',
+        description: 'Lançamento 2025 em azul moderno. Sport car com 303 peças que combina design arrojado e montagem prazerosa para quem ama automóveis.',
+        specs: ['303 peças ABS de alta qualidade', 'Cor: Azul', 'Novidade 2025', 'Embalagem presente inclusa']
+    },
+    {
+        id: 'p7', title: 'Mini Car Blocos – Vermelho', price: 140,
+        image: 'https://s.alicdn.com/@sc04/kf/Hb260df7bafcb46c59e11c5688633701fi.jpg_960x960q80.jpg',
+        description: 'Miniatura vibrante em vermelho paixão. Blocos ABS compactos que criam um carro esportivo digno de destaque em qualquer estante.',
+        specs: ['50 peças ABS de alta qualidade', 'Cor: Vermelho', 'Ideal para maiores de 14 anos', 'Embalagem presente inclusa']
+    },
+    {
+        id: 'p8', title: 'Sport Car MOC Colorido', price: 140,
+        image: 'https://s.alicdn.com/@sc04/kf/H75de83813b674065970db9413315da57x.jpg_960x960q80.jpg',
+        description: 'O mais alegre da coleção! Com 455 peças coloridas, este sport car MOC é perfeito para quem quer personalidade e diversidade visual.',
+        specs: ['455 peças ABS multicoloridas', 'Design único colorido', 'Ideal para maiores de 14 anos', 'Embalagem presente inclusa']
+    },
+    {
+        id: 'p9', title: 'Mini Car MOC – Branco', price: 140,
+        image: 'https://s.alicdn.com/@sc04/kf/Hb0a37725cf0046a4a53785193b2d94ecA.jpg_960x960q80.jpg',
+        description: 'Sofisticação em branco puro. 268 peças ABS para montar um sport car elegante, ideal para presentear ou exibir na prateleira.',
+        specs: ['268 peças ABS de alta qualidade', 'Cor: Branco', 'Ideal para maiores de 14 anos', 'Embalagem presente inclusa']
+    },
+    {
+        id: 'p10', title: 'Sport Car MOC – Vermelho', price: 140,
+        image: 'https://s.alicdn.com/@sc04/kf/H0735dff1ec5c4351992a51aef0d8925ek.jpg_960x960q80.jpg',
+        description: 'Clássico vermelho esportivo em miniatura. Blocos ABS com excelente custo-benefício para iniciar ou complementar sua coleção.',
+        specs: ['50 peças ABS de alta qualidade', 'Cor: Vermelho', 'Ideal para maiores de 14 anos', 'Embalagem presente inclusa']
+    },
+    {
+        id: 'p11', title: 'Super Car ABS – Laranja & Preto', price: 140,
+        image: 'https://s.alicdn.com/@sc04/kf/H46ccc11548c24a6d8f83c564c2b2887em.jpg_960x960q80.jpg',
+        description: 'Combinação explosiva de laranja e preto. Supercar com contraste marcante e blocos ABS de qualidade para uma montagem incrível.',
+        specs: ['50 peças ABS de alta qualidade', 'Cores: Laranja e Preto', 'Ideal para maiores de 14 anos', 'Embalagem presente inclusa']
+    },
+    {
+        id: 'p12', title: 'Supercar Técnico – Branco & Amarelo', price: 140,
+        image: 'https://s.alicdn.com/@sc04/kf/H4a02826aa2174fbb9291835c5a6e28dbJ.jpg_960x960q80.jpg',
+        description: 'Supercar técnico com 326 peças em branco e amarelo racing. Design inspirado em carros de competição com montagem detalhada e precisa.',
+        specs: ['326 peças ABS de alta qualidade', 'Cores: Branco e Amarelo', 'Ideal para maiores de 14 anos', 'Embalagem presente inclusa']
+    },
+    {
+        id: 'p13', title: 'Mini Super Car – Cinza', price: 140,
+        image: 'https://s.alicdn.com/@sc04/kf/H903513c1c02d45269fa7e05b25be39ceH.jpg_960x960q80.jpg',
+        description: 'Supercar compacto em cinza elegante. Blocos ABS que reproduzem um carro esportivo com estilo discreto e sofisticado.',
+        specs: ['50 peças ABS de alta qualidade', 'Cor: Cinza', 'Ideal para maiores de 14 anos', 'Embalagem presente inclusa']
+    },
+    {
+        id: 'p14', title: 'Technical SUV – Preto', price: 140,
+        image: 'https://s.alicdn.com/@sc04/kf/Haedb162b50484bcfacbad12115581044w.jpg_960x960q80.jpg',
+        description: 'SUV técnico em preto poderoso. Com 351 peças detalhadas, reproduz um veículo de alto padrão com precisão e robustez impressionantes.',
+        specs: ['351 peças ABS de alta qualidade', 'Cor: Preto', 'Ideal para maiores de 14 anos', 'Embalagem presente inclusa']
+    },
+    {
+        id: 'p15', title: 'Nostalgic Supercar – Preto', price: 140,
+        image: 'https://s.alicdn.com/@sc04/kf/H58439e436ec640948e2535e2528c5dc2d.jpg_960x960q80.jpg',
+        description: 'Arte nostálgica em blocos pretos. 359 peças que reconstroem o charme atemporal dos supercars clássicos numa montagem cativante e criativa.',
+        specs: ['359 peças ABS de alta qualidade', 'Cor: Preto', 'Ideal para maiores de 14 anos', 'Embalagem presente inclusa']
+    },
+    {
+        id: 'p16', title: 'Technical Car MOC – Cinza', price: 140,
+        image: 'https://s.alicdn.com/@sc04/kf/H6adae2f5f5824e2ea06735997e1a6521z.jpg_960x960q80.jpg',
+        description: 'Carro técnico em cinza refinado. Conjunto com 332 peças que combina engenharia e arte num modelo que vale qualquer prateleira de colecionador.',
+        specs: ['332 peças ABS de alta qualidade', 'Cor: Cinza', 'Ideal para maiores de 14 anos', 'Embalagem presente inclusa']
+    },
+    {
+        id: 'p17', title: 'Mini Sport Car – Preto & Branco', price: 140,
+        image: 'https://s.alicdn.com/@sc04/kf/H2d271c4b85974d8da09e4bc3730a3f23l.jpg_960x960q80.jpg',
+        description: 'Contraste clássico em preto e branco. 313 peças eco-friendly que montam um sport car elegante com personalidade marcante e acabamento impecável.',
+        specs: ['313 peças ABS eco-friendly', 'Cores: Preto e Branco', 'Ideal para maiores de 14 anos', 'Embalagem presente inclusa']
     }
 ];
 
-const displays = [
+const linhapremiun = [
     {
-        id: 'd1', title: 'Diorama Garagem Premium', price: 499.90,
-        image: 'uploads/cenarios/diorama-garagem.jpg',
-        cenario: 'uploads/cenarios/diorama-garagem.jpg',
-        description: 'Uma garagem particular detalhada: piso de concreto texturizado, prateleiras com ferramentas, iluminação interna e portas articuladas. O cenário perfeito para qualquer miniatura.',
-        specs: ['Escala compatível 1:64', 'Aprox. 650 peças', 'Iluminação LED inclusa', 'Portas e gavetas articuladas']
+        id: 'm1', title: 'MOC Mini Beetle Camping Car – PB8805', price: 230,
+        image: 'https://s.alicdn.com/@sc04/kf/Hd58c85a3c1da41b2bc71ffb070088e2eX.jpg_960x960q80.jpg',
+        description: 'O icônico Fusca Camping em escala 1:18 com 582 blocos de alta precisão. Design nostálgico e encantador que cativa colecionadores do mundo inteiro.',
+        specs: ['582 peças ABS premium', 'Escala 1:18', 'Design MOC exclusivo', 'Embalagem caixa colorida premium']
     },
     {
-        id: 'd2', title: 'Display Interseção', price: 399.90,
-        image: 'uploads/cenarios/display-intersecao.jpg',
-        cenario: 'uploads/cenarios/display-intersecao.jpg',
-        description: 'Cruzamento urbano com asfalto detalhado, faixa de pedestres, semáforos e calçadas com meios-fios. Ideal para recrear cenas de perseguição ou exposição dinâmica.',
-        specs: ['Escala compatível 1:64', 'Aprox. 480 peças', 'Sinais e placas inclusos', 'Base removível para limpeza']
+        id: 'm2', title: 'Mini Racing Car Supra A80 – PB8815', price: 230,
+        image: 'https://s.alicdn.com/@sc04/kf/H3746b73546fb466fbe0343eb037490ddC.jpg_960x960q80.jpg',
+        description: 'A lenda japonesa Toyota Supra A80 em escala 1:32 com 439 peças. Detalhes de corrida que fazem deste modelo uma joia para fãs do JDM.',
+        specs: ['439 peças ABS premium', 'Escala 1:32', 'Design MOC exclusivo Supra A80', 'Embalagem caixa colorida premium']
     },
     {
-        id: 'd3', title: 'Estacionamento VIP', price: 359.90,
-        image: 'uploads/cenarios/display-estacionamento.jpg',
-        cenario: 'uploads/cenarios/display-estacionamento.jpg',
-        description: 'Estacionamento de shopping de luxo com vagas individuais, colunas de concreto, numeração e marcações de solo. Comporta até 6 miniaturas em exibição.',
-        specs: ['Escala compatível 1:64', 'Aprox. 420 peças', 'Capacidade para 6 carros', 'Números de vaga inclusos']
+        id: 'm3', title: 'MOC MK2 Mini Sports Car – PB8839', price: 230,
+        image: 'https://s.alicdn.com/@sc04/kf/H634f883c7e8140c8b2e6c6ab2c02fbd32.jpg_960x960q80.jpg',
+        description: 'O clássico MK2 em escala 1:18 com 479 peças detalhadas. Um tributo ao design esportivo dos anos 80 recriado com fidelidade absoluta em blocos.',
+        specs: ['479 peças ABS premium', 'Escala 1:18', 'Design MOC MK2 exclusivo', 'Embalagem caixa colorida premium']
     },
     {
-        id: 'd4', title: 'Display de Pista', price: 299.90,
-        image: 'uploads/cenarios/display-pista.jpg',
-        cenario: 'uploads/cenarios/display-pista.jpg',
-        description: 'Trecho de circuito fechado com guard rail lateral, curva banqueada, marcações de largada e paddock. Para quem quer exibir os GT3 e Race Cars no habitat natural.',
-        specs: ['Escala compatível 1:64', 'Aprox. 380 peças', 'Guard rails e marcações inclusos', 'Compatível com linha Racing']
+        id: 'm4', title: 'MOC Mini Sports Car – PB8808', price: 230,
+        image: 'https://s.alicdn.com/@sc04/kf/H66c2c75f4401491eb65ed252490ecb8aa.jpg_960x960q80.jpg',
+        description: 'Supercar esportivo em escala 1:18 com 367 peças de altíssima qualidade. Design simulação que reproduz cada curva com precisão de detalhes impressionante.',
+        specs: ['367 peças ABS premium', 'Escala 1:18', 'Design MOC exclusivo', 'Embalagem caixa colorida premium']
     }
 ];
 
-const combos = [
+const expositores = [
     {
-        id: 'c1',
-        title: 'Kit Garagem Turbo',
-        subtitle: 'Porsche 911 Turbo + Diorama Garagem',
-        price: (299.90 + 499.90) * 0.85,
-        image: 'uploads/cenarios/diorama-garagem.jpg',
-        carImage: 'uploads/veiculos/porsche-911-turbo-black.jpg',
-        displayImage: 'uploads/cenarios/diorama-garagem.jpg',
-        description: 'O combo ideal para começar sua coleção. O Porsche 911 Turbo Black encontra a Garagem Premium — juntos criam uma cena digna de exposição em qualquer ambiente.',
-        specs: ['15% de desconto sobre o preço individual', 'Porsche 911 Turbo (aprox. 280 peças)', 'Diorama Garagem com LED (aprox. 650 peças)', 'Embalagem premium de presente'],
-        isCombo: true
+        id: 'e1', title: 'City Speed Racer Vintage Garage', price: 220,
+        image: 'https://s.alicdn.com/@sc04/kf/H7f7955955e554d388f9c695a519b4908D.jpg_960x960q80.jpg',
+        description: 'Garagem vintage com rampa elevatória e cena de oficina em escala 1:24. Com 750 peças, cria o cenário perfeito para expor sua coleção de miniaturas.',
+        specs: ['750 peças ABS de alta qualidade', 'Escala 1:24', 'Cena de oficina com rampa elevatória', 'Compatível com miniaturas 1:24']
     },
     {
-        id: 'c2',
-        title: 'Kit Pista GT3',
-        subtitle: 'Lamborghini GT3 + Display de Pista',
-        price: (349.90 + 299.90) * 0.85,
-        image: 'uploads/cenarios/display-pista.jpg',
-        carImage: 'uploads/veiculos/lamborghini-gt3-yellow.jpg',
-        displayImage: 'uploads/cenarios/display-pista.jpg',
-        description: 'O Lamborghini GT3 amarelo no ambiente que merece: um trecho de circuito completo com guard rail e marcações. Para o entusiasta de motorsport.',
-        specs: ['15% de desconto sobre o preço individual', 'Lamborghini GT3 (aprox. 320 peças)', 'Display de Pista (aprox. 380 peças)', 'Embalagem premium de presente'],
-        isCombo: true
+        id: 'e2', title: 'MOC Vintage Garage Workshop – X5007', price: 220,
+        image: 'https://s.alicdn.com/@sc04/kf/H3a0391bd765a4033a39f730518c001ffn.jpg_960x960q80.jpg',
+        description: 'Oficina vintage estilo Speed Racer com 532 peças e rampa elevatória em escala 1:35. O cenário ideal para colecionar e exibir com personalidade.',
+        specs: ['532 peças ABS de alta qualidade', 'Escala 1:35', 'Rampa elevatória inclusa', 'Design nostálgico Speed Racer']
     },
     {
-        id: 'c3',
-        title: 'Kit Drift E30',
-        subtitle: 'BMW E30 M3 + Display Interseção',
-        price: (259.90 + 399.90) * 0.85,
-        image: 'uploads/cenarios/display-intersecao.jpg',
-        carImage: 'uploads/veiculos/bmw-e30-m3-white.jpg',
-        displayImage: 'uploads/cenarios/display-intersecao.jpg',
-        description: 'A lenda branca do Grupo A no cruzamento urbano. BMW E30 M3 + Display Interseção: uma cena de filme recriada em escala 1:64.',
-        specs: ['15% de desconto sobre o preço individual', 'BMW E30 M3 (aprox. 260 peças)', 'Display Interseção (aprox. 480 peças)', 'Embalagem premium de presente'],
-        isCombo: true
+        id: 'e3', title: 'City Street View – Car Repair Shop', price: 220,
+        image: 'https://s.alicdn.com/@sc04/kf/He03456dc3a104fc1aa156e7cccf46282C.jpg_960x960q80.jpg',
+        description: 'Loja de reparo automotivo com visual urbano e 489 peças detalhadas. Cenário da série City Street View para exibir sua coleção com charme e estilo.',
+        specs: ['489 peças ABS de alta qualidade', 'Série City Street View', 'Cena de loja de reparo automotivo', 'Compatível com miniaturas da linha']
     }
 ];
 
 // Mapa rápido de id → produto
-const allProducts = [...veiculos, ...displays, ...combos].reduce((acc, p) => {
+const allProducts = [...linhapadrao, ...linhapremiun, ...expositores].reduce((acc, p) => {
     acc[p.id] = p;
     return acc;
 }, {});
@@ -129,33 +167,17 @@ function formatPrice(price) {
 
 // --- Renderização dos Produtos ---
 function createProductCard(product) {
-    const isComboTag = product.isCombo ? `<span class="tag-combo">Combo Oferta</span>` : '';
-
-    let imageHtml;
-    if (product.isCombo) {
-        imageHtml = `
-            <div class="combo-images">
-                <img src="${product.carImage}" alt="Carro" class="combo-image-half" loading="lazy">
-                <img src="${product.displayImage}" alt="Display" class="combo-image-half" loading="lazy">
-                <div class="combo-image-divider"></div>
-                <div class="combo-image-plus">+</div>
-            </div>
-        `;
-    } else {
-        imageHtml = `
-            <div class="product-image-wrapper">
-                <img src="${product.image}" alt="${product.title}" class="product-image" loading="lazy">
-            </div>
-        `;
-    }
+    const imageHtml = `
+        <div class="product-image-wrapper">
+            <img src="${product.image}" alt="${product.title}" class="product-image" loading="lazy">
+        </div>
+    `;
 
     return `
         <div class="product-card reveal-up" data-id="${product.id}" data-tilt onclick="openProductDetail('${product.id}')">
-            ${isComboTag}
             ${imageHtml}
             <div class="product-info">
                 <h3 class="product-title">${product.title}</h3>
-                ${product.subtitle ? `<p style="font-size:0.85rem;color:var(--text-secondary);margin:0 0 0.5rem;">${product.subtitle}</p>` : ''}
                 <span class="product-price">${formatPrice(product.price)}</span>
                 <div class="product-action">
                     <button class="btn btn-secondary add-to-cart" onclick="event.stopPropagation(); addToCart('${product.id}', '${product.title}', ${product.price}, '${product.image}')">
@@ -168,20 +190,20 @@ function createProductCard(product) {
 }
 
 function renderProducts() {
-    document.getElementById('carros-grid').innerHTML = veiculos.map(createProductCard).join('');
-    document.getElementById('displays-grid').innerHTML = displays.map(createProductCard).join('');
-    document.getElementById('combos-grid').innerHTML = combos.map(createProductCard).join('');
+    document.getElementById('padrao-grid').innerHTML = linhapadrao.map(createProductCard).join('');
+    document.getElementById('premium-grid').innerHTML = linhapremiun.map(createProductCard).join('');
+    document.getElementById('expositores-grid').innerHTML = expositores.map(createProductCard).join('');
     initTiltEffect();
 }
 
 // --- Hero Slideshow ---
 const heroSlideImages = [
-    'uploads/veiculos/porsche-911-turbo-black.jpg',
-    'uploads/veiculos/lamborghini-gt3-yellow.jpg',
-    'uploads/veiculos/bmw-e30-m3-white.jpg',
-    'uploads/veiculos/porsche-911-rwb-red.jpg',
-    'uploads/veiculos/audi-rs-touring-black.jpg',
-    'uploads/veiculos/lancer-evo-red.jpg',
+    'https://s.alicdn.com/@sc04/kf/H1608910cf6a84e9380d72127178287764.jpg_960x960q80.jpg',
+    'https://s.alicdn.com/@sc04/kf/H28a0ffceb9e4454f93ba5dda0134b9f8m.jpg_960x960q80.jpg',
+    'https://s.alicdn.com/@sc04/kf/H75de83813b674065970db9413315da57x.jpg_960x960q80.jpg',
+    'https://s.alicdn.com/@sc04/kf/Hd58c85a3c1da41b2bc71ffb070088e2eX.jpg_960x960q80.jpg',
+    'https://s.alicdn.com/@sc04/kf/H3746b73546fb466fbe0343eb037490ddC.jpg_960x960q80.jpg',
+    'https://s.alicdn.com/@sc04/kf/H7f7955955e554d388f9c695a519b4908D.jpg_960x960q80.jpg',
 ];
 
 let currentSlide = 0;
@@ -191,14 +213,12 @@ function initHeroSlideshow() {
     const slideshowEl = document.getElementById('hero-slideshow');
     const indicatorsEl = document.getElementById('hero-indicators');
 
-    // Criar slides
     heroSlideImages.forEach((src, i) => {
         const slide = document.createElement('div');
         slide.className = 'hero-slide' + (i === 0 ? ' active' : '');
         slide.style.backgroundImage = `url('${src}')`;
         slideshowEl.appendChild(slide);
 
-        // Criar dot indicator
         const dot = document.createElement('button');
         dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
         dot.setAttribute('aria-label', `Slide ${i + 1}`);
@@ -221,7 +241,6 @@ function goToSlide(index) {
     slides[currentSlide].classList.add('active');
     dots[currentSlide].classList.add('active');
 
-    // Reset interval
     clearInterval(slideInterval);
     slideInterval = setInterval(nextSlide, 4500);
 }
@@ -307,21 +326,11 @@ function openProductDetail(id) {
     const specsEl = document.getElementById('product-detail-specs');
     const addBtn = document.getElementById('product-detail-add');
 
-    // Images
-    if (product.isCombo) {
-        imagesEl.className = 'product-detail-images combo-detail';
-        imagesEl.innerHTML = `
-            <img src="${product.carImage}" alt="Carro">
-            <div class="combo-detail-divider"></div>
-            <img src="${product.displayImage}" alt="Display">
-        `;
-    } else {
-        imagesEl.className = 'product-detail-images';
-        imagesEl.innerHTML = `<img src="${product.cenario || product.image}" alt="${product.title}" class="detail-img-main">`;
-    }
+    imagesEl.className = 'product-detail-images';
+    imagesEl.innerHTML = `<img src="${product.image}" alt="${product.title}" class="detail-img-main">`;
 
-    // Info
-    badgeEl.textContent = product.isCombo ? 'Combo — 15% OFF' : (id.startsWith('v') ? 'Miniatura' : 'Display / Cenário');
+    const badgeMap = { p: 'Linha Padrão', m: 'Linha Premium', e: 'Expositor' };
+    badgeEl.textContent = badgeMap[id[0]] || 'Produto';
     badgeEl.style.display = '';
     titleEl.textContent = product.title;
     priceEl.textContent = formatPrice(product.price);
