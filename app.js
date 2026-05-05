@@ -312,9 +312,23 @@ window.addEventListener('scroll', () => {
 });
 
 // --- Product Detail Modal ---
+function trackEvent(eventName, params) {
+    if (typeof gtag === 'function') {
+        gtag('event', eventName, params);
+    }
+}
+
 function openProductDetail(id) {
     const product = allProducts[id];
     if (!product) return;
+
+    const categoryMap = { p: 'Linha Padrão', m: 'Linha Premium', e: 'Expositor' };
+    trackEvent('view_item', {
+        item_id: id,
+        item_name: product.title,
+        item_category: categoryMap[id[0]] || 'Produto',
+        price: product.price
+    });
 
     const overlay = document.getElementById('product-detail-overlay');
     const wrapper = document.getElementById('product-detail-wrapper');
@@ -390,6 +404,7 @@ function updateCartUI() {
 
 window.addToCart = function(id, title, price, image) {
     cart.push({ id, title, price, image });
+    trackEvent('add_to_cart', { item_id: id, item_name: title, price: price });
     updateCartUI();
     openCart();
 };
@@ -429,6 +444,10 @@ checkoutBtn.addEventListener('click', () => {
         alert("Adicione itens ao carrinho primeiro.");
         return;
     }
+    trackEvent('begin_checkout', {
+        value: cart.reduce((s, i) => s + i.price, 0),
+        items: cart.map(i => ({ item_id: i.id, item_name: i.title, price: i.price }))
+    });
     closeCart();
     modalOverlay.classList.add('active');
 });
@@ -437,6 +456,28 @@ closeModalBtn.addEventListener('click', () => {
     modalOverlay.classList.remove('active');
 });
 
+// --- Rastreamento de seções visitadas ---
+function initSectionTracking() {
+    const sections = [
+        { id: 'padrao', name: 'Linha Padrão' },
+        { id: 'premium', name: 'Linha Premium' },
+        { id: 'expositores', name: 'Expositores' }
+    ];
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const section = sections.find(s => s.id === entry.target.id);
+                if (section) trackEvent('view_section', { section_name: section.name });
+            }
+        });
+    }, { threshold: 0.3 });
+
+    sections.forEach(s => {
+        const el = document.getElementById(s.id);
+        if (el) observer.observe(el);
+    });
+}
+
 // --- Inicialização ---
 document.addEventListener('DOMContentLoaded', () => {
     initHeroSlideshow();
@@ -444,4 +485,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initScrollScrubbing();
     updateCartUI();
+    initSectionTracking();
 });
